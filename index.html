@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulire Inc — 台灣食品的北美出海夥伴</title>
+<meta name="description" content="Pulire Inc 專注於協助台灣食品品牌進入美國主流零售通路。從品牌定位到通路上架，一條龍出海服務。">
+<meta property="og:title" content="Pulire Inc — 台灣食品的北美出海夥伴">
+<meta property="og:description" content="讓台灣美食，站上美國的貨架。從品牌定位、市場驗證到通路對接，我們是你的北美市場入場券。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   PULIRE INC — Premium Brand Website
+   ============================================= */
+
+/* --- Reset & Custom Properties --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --dark: #1a2e2a;
+  --dark-deep: #0f1f1b;
+  --dark-mid: #1e352f;
+  --gold: #c9a96e;
+  --gold-light: #d4b87a;
+  --gold-pale: rgba(201, 169, 110, 0.12);
+  --cream: #faf8f4;
+  --cream-mid: #f2ede5;
+  --text-on-dark: #e8e0d4;
+  --text-on-dark-dim: rgba(232, 224, 212, 0.7);
+  --text-dark: #2a2a2a;
+  --text-muted: #5c5b57;
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Noto Sans TC', 'DM Sans', sans-serif;
+  --font-en: 'DM Sans', sans-serif;
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --section-py: clamp(80px, 12vh, 160px);
+  --section-px: clamp(24px, 5vw, 80px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--dark);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--gold); color: var(--dark); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+a { color: inherit; text-decoration: none; }
+
+/* --- Accessibility --- */
+.skip-link {
+  position: absolute; top: -100px; left: 16px;
+  padding: 8px 20px; background: var(--gold); color: var(--dark);
+  font-weight: 500; z-index: 10001; border-radius: 0 0 4px 4px;
+}
+.skip-link:focus { top: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* --- Grain Overlay --- */
+.grain {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.04;
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* --- Reveal Animation --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Section Label (small uppercase gold) --- */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-en);
+  font-size: clamp(0.68rem, 0.9vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+.section-label::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 1px;
+  background: var(--gold); opacity: 0.4;
+}
+
+/* --- CTA Button --- */
+.btn {
+  display: inline-block;
+  padding: 17px 48px;
+  border: 1px solid rgba(201, 169, 110, 0.6);
+  color: var(--gold);
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+  background: none;
+}
+.btn:hover { border-color: var(--gold); }
+.btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease-out);
+  z-index: -1;
+}
+.btn:hover { color: var(--dark); }
+.btn:hover::before { transform: scaleX(1); }
+
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px var(--section-px);
+  transition: background 0.4s ease, padding 0.3s ease, box-shadow 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(15, 31, 27, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding-top: 16px; padding-bottom: 16px;
+  box-shadow: 0 1px 0 rgba(201, 169, 110, 0.08);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 400;
+  letter-spacing: 0.28em; color: var(--text-on-dark);
+}
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.14em; color: var(--gold);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  padding: 10px 28px;
+  transition: all 0.35s ease;
+}
+.nav-cta:hover {
+  background: var(--gold); color: var(--dark);
+  border-color: var(--gold);
+}
+
+
+/* =============================================
+   SECTION 1: HERO
+   ============================================= */
+.hero {
+  position: relative;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 120px var(--section-px) 80px;
+}
+
+/* Hero background image layer */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(0.12) brightness(0.6);
+}
+/* Dark gradient overlay on photo */
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(15, 31, 27, 0.78) 0%,
+      rgba(15, 31, 27, 0.55) 40%,
+      rgba(15, 31, 27, 0.6) 70%,
+      rgba(15, 31, 27, 0.92) 100%
+    );
+}
+/* Decorative gold accent line at top */
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 120px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  opacity: 0.3; z-index: 2;
+}
+
+/* Hero content — centered */
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 800px;
+}
+.hero-content > * {
+  opacity: 0;
+  animation: heroReveal 1s var(--ease-out) forwards;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.3s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.55s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.75s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.95s; }
+.hero-content > *:nth-child(5) { animation-delay: 1.15s; }
+
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label {
+  font-family: var(--font-en);
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: inline-block;
+  position: relative;
+  padding: 0 1.5rem;
+}
+.hero-label::before, .hero-label::after {
+  content: ''; position: absolute; top: 50%;
+  width: 36px; height: 1px;
+  background: var(--gold); opacity: 0.4;
+}
+.hero-label::before { right: 100%; }
+.hero-label::after { left: 100%; }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.8vw, 4.5rem);
+  font-weight: 400; color: #fff;
+  line-height: 1.25; margin-bottom: 1.6rem;
+  letter-spacing: 0.02em;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--gold-light);
+}
+.hero-slogan {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  font-weight: 400; font-style: italic;
+  color: rgba(255, 255, 255, 0.7); letter-spacing: 0.04em;
+  margin-bottom: 2.4rem;
+}
+.hero-desc {
+  font-size: 0.98rem; font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 2; max-width: 500px;
+  margin: 0 auto 3rem;
+}
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-on-dark-dim);
+  font-family: var(--font-en); font-size: 0.65rem;
+  letter-spacing: 0.22em; z-index: 2;
+  animation: scrollPulse 2.8s ease-in-out infinite;
+}
+.hero-scroll-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.7; transform: translateX(-50%) translateY(5px); }
+}
+
+
+/* =============================================
+   SECTION 2: PAIN POINTS
+   ============================================= */
+.s-pain {
+  background: var(--cream);
+  padding: var(--section-py) var(--section-px);
+}
+.section-header {
+  max-width: 620px; margin: 0 auto 3.5rem; text-align: center;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 500; line-height: 1.35; margin-bottom: 0.8rem;
+  letter-spacing: 0.015em;
+}
+.section-subtitle {
+  font-size: 0.95rem; font-weight: 400;
+  color: var(--text-muted); line-height: 1.8;
+}
+
+.pain-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 2.8rem 4rem; max-width: 880px; margin: 0 auto;
+}
+.pain-item {
+  display: flex; gap: 1.1rem; align-items: flex-start;
+}
+.pain-icon {
+  flex-shrink: 0; width: 40px; height: 40px;
+  color: var(--gold); margin-top: 3px;
+}
+.pain-text {
+  font-size: 0.98rem; font-weight: 400; line-height: 1.8;
+}
+
+
+/* =============================================
+   SECTION 3: TARGET CHANNELS
+   ============================================= */
+.s-channels {
+  background: var(--dark);
+  color: var(--text-on-dark);
+  padding: var(--section-py) var(--section-px);
+}
+.s-channels .section-title { color: #fff; }
+.s-channels .section-subtitle { color: var(--text-on-dark-dim); }
+.s-channels .section-header {
+  text-align: center; max-width: 600px; margin: 0 auto 3.5rem;
+}
+
+/* Logo grid */
+/* -- Channel grid: premium brand showcase -- */
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.channel-card {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 120px;
+  padding: 2rem 1.6rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+.channel-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(201, 169, 110, 0.15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+/* Base logo: horizontal text logos */
+.channel-logo {
+  max-height: 48px;
+  max-width: 160px;
+  width: auto; height: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.35s ease;
+}
+.channel-card:hover .channel-logo { opacity: 1; }
+/* Square / circle logos with internal text (Whole Foods) */
+.channel-logo--tall { max-height: 84px; max-width: 84px; }
+/* Icon + text combo (Target — bullseye has no text in image) */
+.channel-logo-combo {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+}
+.channel-logo-combo img {
+  height: 44px; width: 44px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.35s ease;
+}
+.channel-card:hover .channel-logo-combo img { opacity: 1; }
+.channel-logo-combo span {
+  font-family: var(--font-en);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.18em;
+  text-align: center;
+  line-height: 1;
+  transition: color 0.35s ease;
+}
+.channel-card:hover .channel-logo-combo span { color: #fff; }
+.channels-note {
+  font-size: 0.82rem; color: var(--text-on-dark-dim);
+  margin-top: 3rem; font-weight: 400; letter-spacing: 0.01em;
+  text-align: center;
+}
+.channels-note em {
+  color: var(--gold); font-style: normal; font-weight: 400;
+}
+
+
+/* =============================================
+   SECTION 4: SERVICE PROCESS — Card Grid
+   ============================================= */
+.s-process {
+  background: var(--cream);
+  padding: var(--section-py) var(--section-px);
+}
+.s-process .section-subtitle { font-family: var(--font-en); }
+
+/* 2x2 card grid */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.process-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.process-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 169, 110, 0.22);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.1);
+}
+
+/* Card image area */
+.process-card-img {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.process-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.process-card:hover .process-card-img img {
+  transform: scale(1.04);
+}
+/* Subtle bottom gradient for smooth transition to text */
+.process-card-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.06) 100%);
+  pointer-events: none;
+}
+
+/* Step badge — overlay on image top-right */
+.process-card-badge {
+  position: absolute; top: 14px; right: 14px;
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--dark);
+  box-shadow: 0 3px 14px rgba(201, 169, 110, 0.35);
+}
+
+/* Card text body */
+.process-card-body {
+  padding: 1.6rem 1.8rem 2rem;
+}
+.step-label {
+  font-family: var(--font-en);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 500;
+  margin-bottom: 0.7rem; line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--dark);
+}
+.step-desc {
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--text-muted); line-height: 1.85;
+}
+
+
+/* =============================================
+   SECTION 5: WHY CHOOSE US
+   ============================================= */
+.s-why {
+  background: var(--cream-mid);
+  padding: var(--section-py) var(--section-px);
+}
+.why-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 3.2rem 4.5rem; max-width: 920px; margin: 0 auto;
+}
+.why-item {
+  position: relative; padding-left: 1.4rem;
+  border-left: 2px solid var(--gold-pale);
+  transition: border-color 0.35s ease;
+}
+.why-item:hover { border-left-color: var(--gold); }
+.why-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 500;
+  margin-bottom: 0.6rem; line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+.why-desc {
+  font-size: 0.9rem; font-weight: 400;
+  color: var(--text-muted); line-height: 1.85;
+}
+
+
+/* =============================================
+   SECTION 6: CTA
+   ============================================= */
+.s-cta {
+  background: linear-gradient(168deg, var(--dark-mid) 0%, var(--dark-deep) 100%);
+  text-align: center;
+  padding: clamp(72px, 10vh, 130px) var(--section-px);
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(201, 169, 110, 0.12);
+}
+/* Decorative corner circles */
+.s-cta::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(201, 169, 110, 0.06);
+  border-radius: 50%; pointer-events: none;
+}
+.s-cta::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 220px; height: 220px;
+  border: 1px solid rgba(201, 169, 110, 0.04);
+  border-radius: 50%; pointer-events: none;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  font-weight: 500; color: #fff;
+  margin-bottom: 1.2rem; line-height: 1.3;
+  letter-spacing: 0.015em;
+}
+.cta-subtitle {
+  font-size: 1rem; font-weight: 400;
+  color: var(--text-on-dark);
+  opacity: 0.8;
+  max-width: 460px; margin: 0 auto 2.5rem;
+  line-height: 1.9;
+}
+.cta-note {
+  font-size: 0.78rem; color: var(--text-on-dark-dim);
+  margin-top: 1.4rem; font-weight: 400;
+}
+
+
+/* =============================================
+   SECTION 7: FOOTER
+   ============================================= */
+.footer {
+  background: var(--dark-deep);
+  color: var(--text-on-dark-dim);
+  padding: 44px var(--section-px);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.08);
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 400;
+  letter-spacing: 0.24em; color: var(--text-on-dark);
+}
+.footer-tagline { font-size: 0.78rem; margin-top: 0.25rem; font-weight: 400; }
+.footer-right { text-align: right; font-size: 0.78rem; font-weight: 400; }
+.footer-email {
+  color: var(--gold); transition: opacity 0.3s;
+}
+.footer-email:hover { opacity: 0.65; }
+.footer-copy { margin-top: 0.25rem; opacity: 0.45; font-size: 0.72rem; }
+
+
+/* =============================================
+   DECORATIVE ELEMENTS & VISUAL ENHANCEMENTS
+   ============================================= */
+
+/* Pain section — decorative background */
+.s-pain { position: relative; overflow: hidden; }
+.pain-deco {
+  position: absolute; right: -30px; top: 50%;
+  transform: translateY(-50%);
+  width: 360px; height: 360px;
+  pointer-events: none;
+}
+
+/* Process section — position context */
+.s-process { position: relative; }
+
+/* Why section — decorative quotation */
+.s-why { position: relative; overflow: hidden; }
+.why-deco {
+  position: absolute; right: var(--section-px); top: -10px;
+  font-family: var(--font-display);
+  font-size: 16rem; font-weight: 300;
+  color: rgba(201, 169, 110, 0.06);
+  line-height: 0.8;
+  user-select: none; pointer-events: none;
+}
+
+/* CTA extra decoration rings */
+.cta-ring {
+  position: absolute; pointer-events: none;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.05);
+}
+.cta-ring--1 { width: 180px; height: 180px; top: 20%; left: 8%; }
+.cta-ring--2 { width: 100px; height: 100px; bottom: 15%; right: 12%; }
+.cta-ring--3 { width: 260px; height: 260px; top: -60px; left: 50%; transform: translateX(-50%); }
+
+
+/* =============================================
+   PHOTO BANNER SECTIONS
+   ============================================= */
+
+/* =============================================
+   SECTION: WHY TAIWANESE FOOD — Narrative Cards
+   ============================================= */
+.s-why-taiwan {
+  background: var(--dark);
+  padding: var(--section-py) var(--section-px);
+  position: relative; overflow: hidden;
+}
+.s-why-taiwan::before {
+  content: ''; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(to bottom, rgba(201, 169, 110, 0.4), transparent);
+}
+.taiwan-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.taiwan-card {
+  padding: 2.8rem 2.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  transition: transform 0.4s var(--ease-out), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.taiwan-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 110, 0.25);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+.taiwan-card-num {
+  font-family: var(--font-en);
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.6;
+  margin-bottom: 1.2rem;
+}
+.taiwan-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 500; color: #fff;
+  line-height: 1.4; margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+.taiwan-card-desc {
+  font-size: 0.88rem; font-weight: 400;
+  color: var(--text-on-dark-dim);
+  line-height: 2;
+}
+
+
+/* =============================================
+   PHOTO SECTIONS — Visual breaks with imagery
+   ============================================= */
+
+/* Full-width photo banner */
+.photo-banner {
+  position: relative;
+  height: clamp(300px, 42vw, 440px);
+  overflow: hidden;
+}
+.photo-banner img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.photo-banner-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 0 var(--section-px);
+  background: linear-gradient(180deg,
+    rgba(15, 31, 27, 0.5) 0%,
+    rgba(15, 31, 27, 0.68) 100%
+  );
+}
+.photo-banner-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 400; color: #fff;
+  line-height: 1.55; letter-spacing: 0.02em;
+  max-width: 600px;
+}
+.photo-banner-sub {
+  font-family: var(--font-en);
+  font-size: 0.78rem; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 0.8rem; opacity: 0.7;
+  color: var(--gold-light);
+}
+
+/* Split photo + text section */
+.photo-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: clamp(320px, 40vw, 480px);
+}
+.photo-split-img { overflow: hidden; }
+.photo-split-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.photo-split-content {
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 80px);
+  background: var(--dark);
+}
+.photo-split-label {
+  font-family: var(--font-en);
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+}
+.photo-split-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 500; color: #fff;
+  line-height: 1.45; margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+.photo-split-desc {
+  font-size: 0.9rem; font-weight: 400;
+  color: var(--text-on-dark); opacity: 0.75;
+  line-height: 1.9; max-width: 420px;
+}
+
+
+/* CTA background — abstract design, no photos */
+.s-cta-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(201, 169, 110, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(201, 169, 110, 0.05) 0%, transparent 50%),
+    linear-gradient(168deg, var(--dark-mid) 0%, var(--dark-deep) 100%);
+}
+.s-cta > *:not(.s-cta-bg):not(.cta-ring) { position: relative; z-index: 1; }
+
+
+/* =============================================
+   SECTION: MARKET OPPORTUNITY
+   ============================================= */
+.s-opportunity {
+  background: linear-gradient(170deg, #f7f4ee 0%, #ede8dd 100%);
+  padding: var(--section-py) var(--section-px);
+  position: relative; overflow: hidden;
+}
+.s-opportunity .section-title { color: var(--dark); }
+.opp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 3rem;
+  max-width: 1000px; margin: 0 auto;
+}
+.opp-item {
+  position: relative;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(201, 169, 110, 0.25);
+}
+.opp-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.opp-headline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.opp-desc {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+.opp-source {
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(42, 42, 42, 0.35);
+  margin-top: 3rem;
+  font-weight: 400;
+}
+/* Decorative glow behind the section */
+.s-opportunity::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+
+/* =============================================
+   SECTION: WHO WE'RE FOR (FIT CHECK)
+   ============================================= */
+.s-fit {
+  background: var(--dark);
+  color: var(--text-on-dark);
+  padding: var(--section-py) var(--section-px);
+  position: relative; overflow: hidden;
+}
+.s-fit .section-title { color: #fff; }
+.s-fit .section-subtitle {
+  color: var(--text-on-dark-dim);
+  font-family: var(--font-en);
+}
+.fit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.fit-col {
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.fit-col--yes {
+  background: rgba(201, 169, 110, 0.06);
+  border-color: rgba(201, 169, 110, 0.15);
+}
+.fit-col--no {
+  background: rgba(255, 255, 255, 0.03);
+}
+.fit-col-title {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.6rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.fit-col--yes .fit-col-title { color: var(--gold); }
+.fit-col--no .fit-col-title { color: rgba(232, 224, 212, 0.5); }
+.fit-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.fit-list li {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  font-size: 0.88rem; font-weight: 400;
+  line-height: 1.7;
+}
+.fit-col--yes .fit-list li { color: var(--text-on-dark); }
+.fit-col--no .fit-list li { color: rgba(232, 224, 212, 0.45); }
+.fit-icon {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  margin-top: 2px;
+}
+.fit-col--yes .fit-icon { color: var(--gold); }
+.fit-col--no .fit-icon { color: rgba(232, 224, 212, 0.3); }
+.fit-cta {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-on-dark-dim);
+}
+.fit-cta a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+  transition: border-color 0.3s ease;
+}
+.fit-cta a:hover { border-bottom-color: var(--gold); }
+
+
+/* =============================================
+   CTA CHECKLIST (PREP REMINDER)
+   ============================================= */
+.cta-prep {
+  max-width: 520px;
+  margin: 3rem auto 0;
+  padding: 2rem 2.2rem;
+  border: 1px dashed rgba(201, 169, 110, 0.25);
+  border-radius: 10px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+}
+.cta-prep-title {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.cta-prep-list {
+  list-style: none;
+  display: flex; flex-direction: column;
+  gap: 0.7rem;
+}
+.cta-prep-list li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--text-on-dark);
+  opacity: 0.75;
+  line-height: 1.65;
+}
+.cta-prep-list li::before {
+  content: '☐';
+  flex-shrink: 0;
+  color: var(--gold);
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin-top: 1px;
+}
+.cta-prep-note {
+  font-size: 0.78rem;
+  color: var(--text-on-dark-dim);
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh; min-height: 100dvh;
+    padding: 100px var(--section-px) 72px;
+  }
+  .hero-scroll { display: none; }
+  .hero-title { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+  .hero-label::before, .hero-label::after { width: 24px; }
+  .pain-deco { display: none; }
+  .why-deco { font-size: 10rem; right: 10px; }
+  .pain-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+  .channels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .channel-card { min-height: 88px; padding: 1.4rem 1.2rem; }
+  .channel-logo { max-height: 36px; max-width: 120px; }
+  .channel-logo--tall { max-height: 64px; max-width: 64px; }
+  .channel-logo-combo img { height: 32px; width: 32px; }
+  .channel-logo-combo span { font-size: 0.78rem; letter-spacing: 0.12em; }
+
+  .process-grid { grid-template-columns: 1fr; gap: 1.4rem; max-width: 520px; }
+  .process-card-body { padding: 1.3rem 1.4rem 1.6rem; }
+  .process-card-badge { width: 30px; height: 30px; font-size: 0.76rem; top: 10px; right: 10px; }
+
+  .why-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+
+  .taiwan-cards { grid-template-columns: 1fr; gap: 1.5rem; }
+  .taiwan-card { padding: 2rem 1.6rem; }
+
+  .photo-split { grid-template-columns: 1fr; }
+  .photo-split-img { height: 260px; }
+  .photo-split-content { padding: 40px var(--section-px); }
+  .photo-banner { height: clamp(220px, 50vw, 320px); }
+
+  .opp-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+  .opp-item { padding: 1.6rem 0; }
+
+  .fit-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .fit-col { padding: 24px; }
+
+  .cta-prep { padding: 1.6rem; margin-top: 2.5rem; }
+
+  .footer {
+    flex-direction: column; text-align: center; gap: 1.2rem;
+  }
+  .footer-right { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-py: 64px;
+    --section-px: 20px;
+  }
+  .nav { padding: 14px 20px; }
+  .nav-brand { font-size: 1.1rem; letter-spacing: 0.18em; }
+  .nav-cta { padding: 8px 18px; font-size: 0.7rem; }
+  .btn { padding: 16px 38px; font-size: 0.85rem; }
+  .section-header { margin-bottom: 2.5rem; }
+}
+</style>
+</head>
+
+<body>
+<!-- Grain texture overlay (generated via JS) -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Skip to content -->
+<a class="skip-link" href="#pain-points">Skip to content</a>
+
+<!-- Navigation -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <span class="nav-brand">PULIRE</span>
+  <a href="#cta" class="nav-cta">預約諮詢</a>
+</nav>
+
+
+<!-- ============================================
+     SECTION 1: HERO
+     ============================================ -->
+<section class="hero" id="hero">
+  <!-- Background: US grocery aisle — establishes market context -->
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&w=1920&q=80" alt="">
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-label">Pulire Inc</p>
+    <h1 class="hero-title">讓台灣美食<br><em>站上美國的貨架</em></h1>
+    <p class="hero-slogan">From Taiwan to American Shelves — We Open the Door.</p>
+    <p class="hero-desc">從品牌定位、市場驗證到通路對接，我們是你進入 Costco、Whole Foods 等北美主流零售的入場券。</p>
+    <a href="#cta" class="btn">預約免費諮詢</a>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 2: PAIN POINTS
+     ============================================ -->
+<section class="s-pain" id="pain-points">
+  <!-- Decorative abstract illustration -->
+  <svg class="pain-deco" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <circle cx="200" cy="200" r="180" stroke="rgba(201,169,110,0.1)" stroke-width="0.8"/>
+    <circle cx="200" cy="200" r="130" stroke="rgba(201,169,110,0.07)" stroke-width="0.6"/>
+    <circle cx="200" cy="200" r="80" stroke="rgba(201,169,110,0.13)" stroke-width="0.6"/>
+    <path d="M40 280 Q200 40 360 280" stroke="rgba(201,169,110,0.08)" stroke-width="0.6" fill="none"/>
+    <path d="M60 320 Q200 100 340 320" stroke="rgba(201,169,110,0.06)" stroke-width="0.6" fill="none"/>
+    <circle cx="200" cy="200" r="12" fill="rgba(201,169,110,0.1)"/>
+    <circle cx="140" cy="140" r="6" fill="rgba(201,169,110,0.07)"/>
+    <circle cx="280" cy="160" r="5" fill="rgba(201,169,110,0.06)"/>
+    <circle cx="160" cy="280" r="4" fill="rgba(201,169,110,0.06)"/>
+    <circle cx="260" cy="260" r="7" fill="rgba(201,169,110,0.07)"/>
+  </svg>
+  <div class="section-header reveal">
+    <span class="section-label">Pain Points</span>
+    <h2 class="section-title">你是不是也遇到這些問題？</h2>
+  </div>
+
+  <div class="pain-grid">
+    <!-- Pain 1: Market uncertainty -->
+    <div class="pain-item reveal" style="--delay: 0s">
+      <svg class="pain-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="20" r="14"/>
+        <ellipse cx="20" cy="20" rx="7" ry="14"/>
+        <line x1="6" y1="20" x2="34" y2="20"/>
+        <path d="M8.5 12h23M8.5 28h23" opacity="0.45"/>
+      </svg>
+      <p class="pain-text">產品在台灣賣得好，但不知道美國市場買不買單</p>
+    </div>
+
+    <!-- Pain 2: Trade show no follow-up -->
+    <div class="pain-item reveal" style="--delay: 0.1s">
+      <svg class="pain-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 28V12h28v16"/>
+        <line x1="6" y1="16" x2="34" y2="16"/>
+        <path d="M20 16V9M14 9h12"/>
+        <circle cx="20" cy="22" r="1.5" fill="currentColor" stroke="none" opacity="0.3"/>
+        <path d="M16 26h8" opacity="0.4"/>
+      </svg>
+      <p class="pain-text">參加過 trade show，但 buyer 只是路過，沒有實際下文</p>
+    </div>
+
+    <!-- Pain 3: Cultural gap -->
+    <div class="pain-item reveal" style="--delay: 0.2s">
+      <svg class="pain-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 9h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H14l-4 4v-4H7a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2z"/>
+        <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="16.5" cy="17" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="21" cy="17" r="1" fill="currentColor" stroke="none"/>
+        <path d="M31 15h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2v4l-4-4h-6" opacity="0.35"/>
+      </svg>
+      <p class="pain-text">不懂美國 buyer 的採購邏輯和商業文化</p>
+    </div>
+
+    <!-- Pain 4: Don't know the door -->
+    <div class="pain-item reveal" style="--delay: 0.3s">
+      <svg class="pain-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="5" width="20" height="30" rx="1.5"/>
+        <line x1="10" y1="9" x2="30" y2="9" opacity="0.35"/>
+        <circle cx="25" cy="20" r="1.5" fill="currentColor" stroke="none" opacity="0.5"/>
+      </svg>
+      <p class="pain-text">想進 Costco、Whole Foods，但完全不知道門在哪裡</p>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Banner: Cross-cultural business collaboration -->
+<div class="photo-banner reveal">
+  <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80" alt="Cross-cultural business team collaboration" loading="lazy">
+  <div class="photo-banner-overlay">
+    <div>
+      <p class="photo-banner-sub">Bridge the Pacific</p>
+      <p class="photo-banner-text">我們用在地團隊與跨文化理解，<br>為你打開北美市場的大門</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================
+     SECTION: MARKET OPPORTUNITY
+     ============================================ -->
+<section class="s-opportunity" id="opportunity">
+  <div class="section-header reveal">
+    <span class="section-label">The Opportunity Is Now</span>
+    <h2 class="section-title">美國市場，正在瘋亞洲食品</h2>
+  </div>
+
+  <div class="opp-grid">
+    <div class="opp-item reveal" style="--delay: 0s">
+      <div class="opp-number">$381 億</div>
+      <p class="opp-headline">2025 年美國亞洲食品市場規模</p>
+      <p class="opp-desc">以每年 4.7% 的速度持續成長，預計 2032 年將達到 $525 億。美國消費者對亞洲風味的探索意願持續攀升，主流零售商正在擴大亞洲食品的貨架空間。</p>
+    </div>
+
+    <div class="opp-item reveal" style="--delay: 0.1s">
+      <div class="opp-number">年複合成長率 4.7%</div>
+      <p class="opp-headline">亞洲食品貨架正在快速擴張</p>
+      <p class="opp-desc">亞洲零食貨架是美國超市成長最快的區域之一。消費者對異國風味的探索意願創下新高，各大零售商正積極擴大相關品類的空間。</p>
+    </div>
+
+    <div class="opp-item reveal" style="--delay: 0.2s">
+      <div class="opp-number">韓國料理</div>
+      <p class="opp-headline">成長最快品類</p>
+      <p class="opp-desc">受韓劇與 K-pop 文化帶動，韓式食品在北美爆發性成長——而台灣的珍珠奶茶文化，正在走同一條路。</p>
+    </div>
+  </div>
+
+  <p class="opp-source reveal">資料來源：Persistence Market Research, 2025</p>
+</section>
+
+<!-- ============================================
+     SECTION: WHY TAIWANESE FOOD — Narrative Cards
+     ============================================ -->
+<section class="s-why-taiwan" id="why-taiwan">
+  <div class="section-header reveal">
+    <span class="section-label">Why Taiwanese Food, Why Now</span>
+    <h2 class="section-title" style="color: #fff;">為什麼是台灣食品？</h2>
+  </div>
+
+  <div class="taiwan-cards">
+    <div class="taiwan-card reveal" style="--delay: 0s">
+      <span class="taiwan-card-num">01</span>
+      <h3 class="taiwan-card-title">Boba 已經幫你開路了</h3>
+      <p class="taiwan-card-desc">珍珠奶茶已經讓「台灣」這兩個字進入美國年輕消費者的日常詞彙。Boba 是主流文化符號，不需要解釋。你的品牌出海，不是從零開始教育市場，而是順著一波已經存在的文化浪潮前進。</p>
+    </div>
+
+    <div class="taiwan-card reveal" style="--delay: 0.15s">
+      <span class="taiwan-card-num">02</span>
+      <h3 class="taiwan-card-title">台灣製造，是美國 Buyer 的信任標籤</h3>
+      <p class="taiwan-card-desc">台灣食品製造體系成熟，HACCP、ISO、FDA 合規是多數工廠的基本配備。在當前的國際局勢下，美國零售通路正在主動分散供應鏈，尋找值得信賴的亞洲替代來源。「Made in Taiwan」在食品安全信譽與國際好感度上，擁有其他產地難以複製的結構性優勢。同時，台灣品牌在包裝設計與產品精緻度上，走的是「質感中價位」路線——比日本親民、比其他亞洲產地更有品牌感，恰好卡在美國市場最大的消費甜蜜點。</p>
+    </div>
+
+    <div class="taiwan-card reveal" style="--delay: 0.3s">
+      <span class="taiwan-card-num">03</span>
+      <h3 class="taiwan-card-title">這條路，已經有人走通了</h3>
+      <p class="taiwan-card-desc">台灣品牌 A-Sha 拌麵已成功進入 Costco、Target、Walmart 等美國主流通路。新加坡品牌 IRVINS 鹹蛋魚皮也已進駐上百間美國 Costco 門市。亞洲食品進入美國主流貨架，不再是假設——而是正在發生的事實。差的不是機會，是有人幫你打開那扇門。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: TARGET CHANNELS
+     ============================================ -->
+<section class="s-channels" id="channels">
+  <div class="section-header reveal">
+    <span class="section-label">Target Channels</span>
+    <h2 class="section-title">你的產品，值得被這些通路看見</h2>
+    <p class="section-subtitle">以下為我們協助品牌瞄準的北美主流零售通路</p>
+  </div>
+
+  <div class="channels-grid">
+    <div class="channel-card reveal" style="--delay: 0.05s">
+      <img src="img/costco.png" alt="Costco" class="channel-logo" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.1s">
+      <img src="img/wholefoods.png" alt="Whole Foods Market" class="channel-logo channel-logo--tall" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.15s">
+      <img src="img/traderjoes.png" alt="Trader Joe's" class="channel-logo" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.2s">
+      <img src="img/walmart.png" alt="Walmart" class="channel-logo" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.25s">
+      <div class="channel-logo-combo">
+        <img src="img/target.png" alt="Target" loading="lazy">
+        <span>TARGET</span>
+      </div>
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.3s">
+      <img src="img/cvs.png" alt="CVS" class="channel-logo" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.35s">
+      <img src="img/hmart.png" alt="H Mart" class="channel-logo" loading="lazy">
+    </div>
+    <div class="channel-card reveal" style="--delay: 0.4s">
+      <img src="img/99ranch.png" alt="99 Ranch Market" class="channel-logo" loading="lazy">
+    </div>
+  </div>
+  <p class="channels-note reveal" style="--delay: 0.5s">
+    以上為<em>目標合作通路</em>，非現有合作夥伴。我們持續拓展與各大通路的 buyer 關係網絡。
+  </p>
+</section>
+
+<!-- ============================================
+     SECTION 4: SERVICE PROCESS
+     ============================================ -->
+<section class="s-process" id="process">
+  <div class="section-header reveal">
+    <span class="section-label">Our Process</span>
+    <h2 class="section-title">我們怎麼幫你打進美國市場</h2>
+    <p class="section-subtitle">From Positioning to Shelf — 四步到位</p>
+  </div>
+
+  <div class="process-grid">
+    <!-- Card 1: Market Positioning -->
+    <div class="process-card reveal" style="--delay: 0s">
+      <div class="process-card-img">
+        <img src="https://images.unsplash.com/photo-1697026993780-9e430959c636?auto=format&fit=crop&w=720&q=80" alt="Product packaging design analysis" loading="lazy">
+        <span class="process-card-badge">1</span>
+      </div>
+      <div class="process-card-body">
+        <div class="step-label">Step 1</div>
+        <h3 class="step-title">市場定位與包裝診斷</h3>
+        <p class="step-desc">我們分析你的產品在美國市場的競爭力，從包裝設計、價格策略到品類定位，確保你帶去市場的東西是 buyer 想看的。</p>
+      </div>
+    </div>
+
+    <!-- Card 2: Trade Show -->
+    <div class="process-card reveal" style="--delay: 0.12s">
+      <div class="process-card-img">
+        <img src="https://images.unsplash.com/photo-1752155509694-acf7b9c8bf51?auto=format&fit=crop&w=720&q=80" alt="Food trade show exhibition floor" loading="lazy">
+        <span class="process-card-badge">2</span>
+      </div>
+      <div class="process-card-body">
+        <div class="step-label">Step 2</div>
+        <h3 class="step-title">Trade Show 實戰</h3>
+        <p class="step-desc">我們帶你進入北美核心食品展會，安排在地化銷售團隊在現場代表你的品牌，直接與 buyer 面對面溝通。</p>
+      </div>
+    </div>
+
+    <!-- Card 3: Buyer Matching -->
+    <div class="process-card reveal" style="--delay: 0.24s">
+      <div class="process-card-img">
+        <img src="https://images.unsplash.com/photo-1758518729794-456bbd9f70f8?auto=format&fit=crop&w=720&q=80" alt="Business team reviewing market feedback report" loading="lazy">
+        <span class="process-card-badge">3</span>
+      </div>
+      <div class="process-card-body">
+        <div class="step-label">Step 3</div>
+        <h3 class="step-title">Buyer 媒合與反饋報告</h3>
+        <p class="step-desc">展會期間，我們主動引導目標 buyer 到你的攤位。結束後交付完整的市場反饋報告，包含 buyer 的興趣程度、產品評價與採購意向。</p>
+      </div>
+    </div>
+
+    <!-- Card 4: Negotiation & Contract -->
+    <div class="process-card reveal" style="--delay: 0.36s">
+      <div class="process-card-img">
+        <img src="https://images.unsplash.com/photo-1681505531034-8d67054e07f6?auto=format&fit=crop&w=720&q=80" alt="Business handshake over signed contract" loading="lazy">
+        <span class="process-card-badge">4</span>
+      </div>
+      <div class="process-card-body">
+        <div class="step-label">Step 4</div>
+        <h3 class="step-title">通路談判與簽約</h3>
+        <p class="step-desc">我們擔任你的北美商務代理，負責後續的 buyer 跟進、條件談判、合約簽訂與物流整合。因為我們懂他們的語言和文化。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Photo Split: retail shelf context -->
+<div class="photo-split reveal">
+  <div class="photo-split-img">
+    <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=960&q=80" alt="American retail grocery shelves" loading="lazy">
+  </div>
+  <div class="photo-split-content">
+    <p class="photo-split-label">Your Products, Their Shelves</p>
+    <h3 class="photo-split-title">從台灣工廠到美國貨架，<br>我們幫你走完最後一哩路</h3>
+    <p class="photo-split-desc">我們的目標只有一個 — 讓你的產品出現在北美消費者每天走進的超市貨架上。從品牌定位、法規合規到通路談判，每一步都有我們在。</p>
+  </div>
+</div>
+
+
+<!-- ============================================
+     SECTION 5: WHY CHOOSE US
+     ============================================ -->
+<section class="s-why" id="why-us">
+  <div class="why-deco" aria-hidden="true">&ldquo;</div>
+  <div class="section-header reveal">
+    <span class="section-label">Why Pulire</span>
+    <h2 class="section-title">為什麼品牌選擇與我們合作</h2>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-item reveal" style="--delay: 0s">
+      <h3 class="why-title">我們不只懂市場，我們認識買你產品的人</h3>
+      <p class="why-desc">深耕北美食品通路多年，我們與各大零售通路的 buyer 建立了長期合作關係。</p>
+    </div>
+
+    <div class="why-item reveal" style="--delay: 0.1s">
+      <h3 class="why-title">在地化團隊，原生溝通力</h3>
+      <p class="why-desc">我們的北美銷售團隊是在地人，用 buyer 的語言和方式進行商務溝通，消除文化落差。</p>
+    </div>
+
+    <div class="why-item reveal" style="--delay: 0.2s">
+      <h3 class="why-title">不是辦完展就結束，我們陪你走到簽約</h3>
+      <p class="why-desc">從 trade show 到合約落地，我們是端到端的出海夥伴，不是一次性的展覽服務商。</p>
+    </div>
+
+    <div class="why-item reveal" style="--delay: 0.3s">
+      <h3 class="why-title">數據驅動的市場洞察</h3>
+      <p class="why-desc">每一次 buyer 互動都被記錄與分析，我們持續優化你的市場策略，讓每一步都有依據。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION: WHO WE'RE FOR (FIT CHECK)
+     ============================================ -->
+<section class="s-fit" id="fit">
+  <div class="section-header reveal">
+    <span class="section-label">Who We Work With</span>
+    <h2 class="section-title">我們不是什麼品牌都接</h2>
+    <p class="section-subtitle">We Choose Partners, Not Clients.</p>
+  </div>
+
+  <div class="fit-grid">
+    <div class="fit-col fit-col--yes reveal" style="--delay: 0s">
+      <div class="fit-col-title">
+        <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+        適合我們的品牌
+      </div>
+      <ul class="fit-list">
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l3 3 7-7"/></svg>
+          已有穩定的產品線和量產能力
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l3 3 7-7"/></svg>
+          願意投入資源調整包裝與定位以符合美國市場
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l3 3 7-7"/></svg>
+          對進入北美市場有明確的決心，不只是試試看
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l3 3 7-7"/></svg>
+          產品品質有信心，能通過美國 FDA 食品安全標準
+        </li>
+      </ul>
+    </div>
+
+    <div class="fit-col fit-col--no reveal" style="--delay: 0.15s">
+      <div class="fit-col-title">
+        <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M7 7l6 6M13 7l-6 6"/></svg>
+        目前可能還沒準備好的
+      </div>
+      <ul class="fit-list">
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h8"/></svg>
+          產品還在研發階段，尚未量產
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h8"/></svg>
+          沒有預算進行包裝調整或市場測試
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h8"/></svg>
+          只是想了解一下，還沒有出海的決心
+        </li>
+        <li>
+          <svg class="fit-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h8"/></svg>
+          產品尚未取得基本的食品安全認證
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="fit-cta reveal" style="--delay: 0.3s">
+    不確定自己是否準備好了？沒關係，<a href="#cta">預約一次免費諮詢</a>，我們幫你評估。
+  </p>
+</section>
+
+
+<!-- ============================================
+     SECTION: CTA
+     ============================================ -->
+<section class="s-cta" id="cta">
+  <div class="s-cta-bg" aria-hidden="true"></div>
+  <div class="cta-ring cta-ring--1" aria-hidden="true"></div>
+  <div class="cta-ring cta-ring--2" aria-hidden="true"></div>
+  <div class="cta-ring cta-ring--3" aria-hidden="true"></div>
+  <span class="section-label reveal">Get Started</span>
+  <h2 class="cta-title reveal" style="--delay: 0.1s">準備好讓美國認識你了嗎？</h2>
+  <p class="cta-subtitle reveal" style="--delay: 0.2s">預約一次免費的 30 分鐘出海諮詢，讓我們聊聊你的產品有多少機會。</p>
+  <a href="#" class="btn reveal" style="--delay: 0.3s">立即預約諮詢</a>
+  <p class="cta-note reveal" style="--delay: 0.4s">無需任何費用，也不會有推銷壓力。</p>
+
+  <div class="cta-prep reveal" style="--delay: 0.5s">
+    <p class="cta-prep-title">來聊之前，可以先準備這些</p>
+    <ul class="cta-prep-list">
+      <li>你的產品資料（品項、規格、成分表）</li>
+      <li>目前的包裝設計（照片或實體皆可）</li>
+      <li>你理想的零售價格帶（或目前的出廠價）</li>
+      <li>你最想進入的通路類型（大型量販、超市、有機通路、亞洲超市等）</li>
+    </ul>
+    <p class="cta-prep-note">沒有全部準備好也沒關係，我們會在諮詢中一起釐清。</p>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 7: FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div>
+    <div class="footer-brand">PULIRE INC</div>
+    <div class="footer-tagline">台灣食品的北美出海夥伴</div>
+  </div>
+  <div class="footer-right">
+    <a href="mailto:hello@pulire.com" class="footer-email">hello@pulire.com</a>
+    <div class="footer-copy">&copy; 2026 Pulire Inc. All rights reserved.</div>
+  </div>
+</footer>
+
+
+<script>
+/* =============================================
+   PULIRE INC — Interactions
+   ============================================= */
+
+// --- Generate grain texture via canvas ---
+(function () {
+  var canvas = document.createElement('canvas');
+  var size = 180;
+  canvas.width = size;
+  canvas.height = size;
+  var ctx = canvas.getContext('2d');
+  var img = ctx.createImageData(size, size);
+  for (var i = 0; i < img.data.length; i += 4) {
+    var v = Math.random() * 255;
+    img.data[i] = v;
+    img.data[i + 1] = v;
+    img.data[i + 2] = v;
+    img.data[i + 3] = 18;
+  }
+  ctx.putImageData(img, 0, 0);
+  var grain = document.querySelector('.grain');
+  grain.style.backgroundImage = 'url(' + canvas.toDataURL('image/png') + ')';
+})();
+
+// --- Intersection Observer for scroll reveals ---
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var delay = getComputedStyle(entry.target).getPropertyValue('--delay') || '0s';
+        entry.target.style.transitionDelay = delay;
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (el) { observer.observe(el); });
+})();
+
+// --- Navigation scroll effect ---
+(function () {
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+
+// --- Smooth scroll for anchor links ---
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
