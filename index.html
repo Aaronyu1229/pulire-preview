@@ -775,41 +775,52 @@ a { color: inherit; text-decoration: none; }
   width: 1px; height: 80px;
   background: linear-gradient(to bottom, rgba(201, 169, 110, 0.4), transparent);
 }
+
+/* Stacked editorial layout */
 .taiwan-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 740px;
   margin: 0 auto;
 }
 .taiwan-card {
-  padding: 2.8rem 2.2rem;
-  border-radius: 16px;
-  border: 1px solid rgba(201, 169, 110, 0.12);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  transition: transform 0.4s var(--ease-out), border-color 0.4s ease, box-shadow 0.4s ease;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0 2rem;
+  align-items: start;
+  padding: 2.8rem 0;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+  transition: opacity 0.4s ease;
 }
-.taiwan-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201, 169, 110, 0.25);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+.taiwan-card:first-child {
+  padding-top: 0;
+}
+.taiwan-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .taiwan-card-num {
-  font-family: var(--font-en);
-  font-size: 0.72rem; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); opacity: 0.6;
-  margin-bottom: 1.2rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.22;
+  line-height: 1;
+  padding-top: 0.1rem;
+}
+.taiwan-card-content {
+  /* wrapper for title + desc */
 }
 .taiwan-card-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
-  font-weight: 500; color: #fff;
-  line-height: 1.4; margin-bottom: 1.2rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  font-weight: 600; color: #fff;
+  line-height: 1.5; margin-bottom: 0.9rem;
   letter-spacing: 0.01em;
 }
 .taiwan-card-desc {
-  font-size: 0.88rem; font-weight: 400;
+  font-size: 0.9rem; font-weight: 400;
   color: var(--text-on-dark-dim);
   line-height: 2;
 }
@@ -1178,8 +1189,8 @@ a { color: inherit; text-decoration: none; }
 
   .why-grid { grid-template-columns: 1fr; gap: 2.2rem; }
 
-  .taiwan-cards { grid-template-columns: 1fr; gap: 1.5rem; }
-  .taiwan-card { padding: 2rem 1.6rem; }
+  .taiwan-card { grid-template-columns: 1fr; gap: 0; padding: 2rem 0; }
+  .taiwan-card-num { margin-bottom: 0.6rem; font-size: 2.2rem; }
 
   .photo-split { grid-template-columns: 1fr; }
   .photo-split-img { height: 260px; }
@@ -1382,20 +1393,26 @@ a { color: inherit; text-decoration: none; }
   <div class="taiwan-cards">
     <div class="taiwan-card reveal" style="--delay: 0s">
       <span class="taiwan-card-num">01</span>
-      <h3 class="taiwan-card-title">Boba 已經幫你開路了</h3>
-      <p class="taiwan-card-desc">珍珠奶茶已經讓「台灣」這兩個字進入美國年輕消費者的日常詞彙。Boba 是主流文化符號，不需要解釋。你的品牌出海，不是從零開始教育市場，而是順著一波已經存在的文化浪潮前進。</p>
+      <div class="taiwan-card-content">
+        <h3 class="taiwan-card-title">Boba 已經幫你開路了</h3>
+        <p class="taiwan-card-desc">珍珠奶茶已經讓「台灣」這兩個字進入美國年輕消費者的日常詞彙。Boba 是主流文化符號，不需要解釋。你的品牌出海，不是從零開始教育市場，而是順著一波已經存在的文化浪潮前進。</p>
+      </div>
     </div>
 
     <div class="taiwan-card reveal" style="--delay: 0.15s">
       <span class="taiwan-card-num">02</span>
-      <h3 class="taiwan-card-title">台灣製造，是美國 Buyer 的信任標籤</h3>
-      <p class="taiwan-card-desc">台灣食品製造體系成熟，HACCP、ISO、FDA 合規是多數工廠的基本配備。在當前的國際局勢下，美國零售通路正在主動分散供應鏈，尋找值得信賴的亞洲替代來源。「Made in Taiwan」在食品安全信譽與國際好感度上，擁有其他產地難以複製的結構性優勢。同時，台灣品牌在包裝設計與產品精緻度上，走的是「質感中價位」路線——比日本親民、比其他亞洲產地更有品牌感，恰好卡在美國市場最大的消費甜蜜點。</p>
+      <div class="taiwan-card-content">
+        <h3 class="taiwan-card-title">台灣製造，是美國 Buyer 的信任標籤</h3>
+        <p class="taiwan-card-desc">台灣食品製造體系成熟，HACCP、ISO、FDA 合規是基本配備。美國零售通路正在主動分散供應鏈，「Made in Taiwan」在食品安全信譽上擁有結構性優勢。加上台灣品牌走「質感中價位」路線——比日本親民、比其他亞洲產地更有品牌感，恰好卡在美國市場最大的消費甜蜜點。</p>
+      </div>
     </div>
 
     <div class="taiwan-card reveal" style="--delay: 0.3s">
       <span class="taiwan-card-num">03</span>
-      <h3 class="taiwan-card-title">這條路，已經有人走通了</h3>
-      <p class="taiwan-card-desc">台灣品牌 A-Sha 拌麵已成功進入 Costco、Target、Walmart 等美國主流通路。新加坡品牌 IRVINS 鹹蛋魚皮也已進駐上百間美國 Costco 門市。亞洲食品進入美國主流貨架，不再是假設——而是正在發生的事實。差的不是機會，是有人幫你打開那扇門。</p>
+      <div class="taiwan-card-content">
+        <h3 class="taiwan-card-title">這條路，已經有人走通了</h3>
+        <p class="taiwan-card-desc">台灣品牌 A-Sha 拌麵已成功進入 Costco、Target、Walmart 等主流通路。新加坡品牌 IRVINS 鹹蛋魚皮也已進駐上百間美國 Costco 門市。亞洲食品進入主流貨架，不再是假設——而是正在發生的事實。差的不是機會，是有人幫你打開那扇門。</p>
+      </div>
     </div>
   </div>
 </section>
