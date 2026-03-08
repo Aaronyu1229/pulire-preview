@@ -910,47 +910,107 @@ a { color: inherit; text-decoration: none; }
   position: relative; overflow: hidden;
 }
 .s-opportunity .section-title { color: var(--dark); }
-.opp-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem 3rem;
-  max-width: 1000px; margin: 0 auto;
-}
-.opp-item {
+
+/* Hero stat — dominant number */
+.opp-hero {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
   position: relative;
-  padding: 2rem 0;
-  border-top: 1px solid rgba(201, 169, 110, 0.25);
 }
-.opp-number {
+.opp-hero-number {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+}
+.opp-hero-number .opp-gold {
+  color: var(--gold);
+}
+.opp-hero-label {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.opp-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+/* Thin divider below hero */
+.opp-hero::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+  margin: 2.5rem auto 0;
+}
+
+/* Two supporting stat cards */
+.opp-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.opp-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  border-radius: 16px;
+  padding: 2.2rem 2rem;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+}
+.opp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+.opp-card-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 400;
   color: var(--gold);
-  line-height: 1.15;
-  margin-bottom: 0.6rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
-.opp-headline {
+.opp-card-label {
   font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--dark);
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
+  margin-bottom: 0.6rem;
+  line-height: 1.45;
 }
-.opp-desc {
-  font-size: 0.88rem;
+.opp-card-desc {
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.85;
 }
+
 .opp-source {
   text-align: center;
   font-size: 0.72rem;
-  color: rgba(42, 42, 42, 0.35);
-  margin-top: 3rem;
+  color: rgba(42, 42, 42, 0.3);
+  margin-top: 2.5rem;
   font-weight: 400;
 }
+
 /* Decorative glow behind the section */
 .s-opportunity::before {
   content: '';
@@ -1126,8 +1186,10 @@ a { color: inherit; text-decoration: none; }
   .photo-split-content { padding: 40px var(--section-px); }
   .photo-banner { height: clamp(220px, 50vw, 320px); }
 
-  .opp-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-  .opp-item { padding: 1.6rem 0; }
+  .opp-hero { margin-bottom: 2.5rem; }
+  .opp-hero::after { margin-top: 2rem; }
+  .opp-cards { grid-template-columns: 1fr; gap: 1.2rem; }
+  .opp-card { padding: 1.8rem 1.5rem; }
 
   .fit-grid { grid-template-columns: 1fr; gap: 2rem; }
   .fit-col { padding: 24px; }
@@ -1284,23 +1346,24 @@ a { color: inherit; text-decoration: none; }
     <h2 class="section-title">美國市場，正在瘋亞洲食品</h2>
   </div>
 
-  <div class="opp-grid">
-    <div class="opp-item reveal" style="--delay: 0s">
-      <div class="opp-number">$381 億</div>
-      <p class="opp-headline">2025 年美國亞洲食品市場規模</p>
-      <p class="opp-desc">以每年 4.7% 的速度持續成長，預計 2032 年將達到 $525 億。美國消費者對亞洲風味的探索意願持續攀升，主流零售商正在擴大亞洲食品的貨架空間。</p>
-    </div>
+  <!-- Hero stat — the anchor number -->
+  <div class="opp-hero reveal" style="--delay: 0s">
+    <div class="opp-hero-number"><span class="opp-gold">$381</span> 億</div>
+    <p class="opp-hero-label">2025 U.S. Asian Food Market Size</p>
+    <p class="opp-hero-sub">美國亞洲食品市場正以每年 4.7% 的速度持續擴張，預計 2032 年將突破 $525 億。主流零售商正在加速擴大亞洲食品貨架。</p>
+  </div>
 
-    <div class="opp-item reveal" style="--delay: 0.1s">
-      <div class="opp-number">年複合成長率 4.7%</div>
-      <p class="opp-headline">亞洲食品貨架正在快速擴張</p>
-      <p class="opp-desc">亞洲零食貨架是美國超市成長最快的區域之一。消費者對異國風味的探索意願創下新高，各大零售商正積極擴大相關品類的空間。</p>
+  <!-- Two supporting stat cards -->
+  <div class="opp-cards">
+    <div class="opp-card reveal" style="--delay: 0.15s">
+      <div class="opp-card-number">4.7%</div>
+      <p class="opp-card-label">年複合成長率（CAGR）</p>
+      <p class="opp-card-desc">亞洲食品貨架是美國超市成長最快的區域之一，消費者對異國風味的探索意願創下新高。</p>
     </div>
-
-    <div class="opp-item reveal" style="--delay: 0.2s">
-      <div class="opp-number">韓國料理</div>
-      <p class="opp-headline">成長最快品類</p>
-      <p class="opp-desc">受韓劇與 K-pop 文化帶動，韓式食品在北美爆發性成長——而台灣的珍珠奶茶文化，正在走同一條路。</p>
+    <div class="opp-card reveal" style="--delay: 0.25s">
+      <div class="opp-card-number">No.1</div>
+      <p class="opp-card-label">韓國料理 — 成長最快品類</p>
+      <p class="opp-card-desc">受韓劇與 K-pop 文化帶動，韓食在北美爆發成長。台灣珍珠奶茶文化，正在走同一條路。</p>
     </div>
   </div>
 
