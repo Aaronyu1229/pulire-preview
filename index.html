@@ -814,6 +814,54 @@ a { color: inherit; text-decoration: none; }
 }
 .taiwan-card:hover .taiwan-card-img img { transform: scale(1.04); }
 
+/* Product showcase — Card 03 dual product layout */
+.taiwan-card-img--products {
+  max-height: none;
+}
+.taiwan-products-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  align-items: end;
+  justify-items: center;
+  height: 100%;
+  min-height: 280px;
+  padding: 2.2rem 1.4rem 1.2rem;
+  background: linear-gradient(160deg, #1a1a1a 0%, #242424 50%, #1c1c1c 100%);
+}
+.taiwan-product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.2rem 1rem 0.8rem;
+  width: 100%;
+}
+.taiwan-product-item img {
+  max-height: 200px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+  transition: transform 0.6s var(--ease-out);
+}
+.taiwan-card:hover .taiwan-product-item img {
+  transform: scale(1.06);
+}
+.taiwan-product-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .taiwan-card-content {
   padding: 2.8rem 2.5rem;
   display: flex;
@@ -1212,6 +1260,10 @@ a { color: inherit; text-decoration: none; }
   .taiwan-card:nth-child(even) .taiwan-card-content { order: 0; }
   .taiwan-card-content { padding: 2rem 1.6rem; }
   .taiwan-card-num { font-size: 2.2rem; }
+  .taiwan-card-img--products { aspect-ratio: auto; }
+  .taiwan-products-showcase { min-height: 220px; padding: 1.8rem 1.2rem 1rem; gap: 0.8rem; }
+  .taiwan-product-item img { max-height: 180px; }
+  .taiwan-product-label { font-size: 0.65rem; }
 
   .photo-split { grid-template-columns: 1fr; }
   .photo-split-img { height: 260px; }
@@ -1436,10 +1488,19 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <!-- Card 03: image left, text right -->
+    <!-- Card 03: product showcase left, text right -->
     <div class="taiwan-card reveal" style="--delay: 0.3s">
-      <div class="taiwan-card-img">
-        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&q=80" alt="Asian food products on supermarket shelves" loading="lazy">
+      <div class="taiwan-card-img taiwan-card-img--products">
+        <div class="taiwan-products-showcase">
+          <div class="taiwan-product-item">
+            <img src="img/asha-noodle.jpg" alt="A-Sha Tainan Style Noodle — Costco, Target, Walmart" loading="lazy">
+            <span class="taiwan-product-label">A-Sha 阿舍乾麵</span>
+          </div>
+          <div class="taiwan-product-item">
+            <img src="img/irvins-fishskin.jpg" alt="IRVINS Salted Egg Fish Skin — Costco" loading="lazy">
+            <span class="taiwan-product-label">IRVINS 鹹蛋魚皮</span>
+          </div>
+        </div>
       </div>
       <div class="taiwan-card-content">
         <span class="taiwan-card-num">03</span>
