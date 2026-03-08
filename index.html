@@ -581,6 +581,80 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1.4rem; font-weight: 400;
 }
 
+/* -- Inline consultation form -- */
+.cta-form {
+  max-width: 520px; margin: 2.2rem auto 0;
+  text-align: left;
+}
+.cta-form-row {
+  margin-bottom: 1rem;
+}
+.cta-form-row--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.cta-form-label {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.7;
+  margin-bottom: 0.45rem;
+}
+.cta-input,
+.cta-textarea {
+  width: 100%; box-sizing: border-box;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 400;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.cta-input::placeholder,
+.cta-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+}
+.cta-input:focus,
+.cta-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.09);
+}
+.cta-textarea {
+  min-height: 100px; resize: vertical;
+  line-height: 1.7;
+}
+.cta-form .btn {
+  width: 100%;
+  margin-top: 0.6rem;
+  text-align: center;
+  border: 1px solid rgba(201, 169, 110, 0.6);
+}
+.cta-form .btn:hover { border-color: var(--gold); }
+/* Success state */
+.cta-form-success {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+.cta-form-success-icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.cta-form-success-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 500;
+  color: #fff; margin-bottom: 0.6rem;
+}
+.cta-form-success-desc {
+  font-size: 0.88rem; color: var(--text-on-dark-dim);
+  line-height: 1.8;
+}
+
 
 /* =============================================
    SECTION 7: FOOTER
@@ -1021,6 +1095,8 @@ a { color: inherit; text-decoration: none; }
   .fit-col { padding: 24px; }
 
   .cta-prep { padding: 1.6rem; margin-top: 2.5rem; }
+  .cta-form-row--split { grid-template-columns: 1fr; }
+  .cta-input, .cta-textarea { font-size: 1rem; padding: 14px 14px; }
 
   .footer {
     flex-direction: column; text-align: center; gap: 1.2rem;
@@ -1460,8 +1536,29 @@ a { color: inherit; text-decoration: none; }
   <span class="section-label reveal">Get Started</span>
   <h2 class="cta-title reveal" style="--delay: 0.1s">準備好讓美國認識你了嗎？</h2>
   <p class="cta-subtitle reveal" style="--delay: 0.2s">預約一次免費的 30 分鐘出海諮詢，讓我們聊聊你的產品有多少機會。</p>
-  <a href="#" class="btn reveal" style="--delay: 0.3s">立即預約諮詢</a>
-  <p class="cta-note reveal" style="--delay: 0.4s">無需任何費用，也不會有推銷壓力。</p>
+  <!-- Inline consultation form -->
+  <form class="cta-form reveal" style="--delay: 0.3s" id="cta-form">
+    <div class="cta-form-row">
+      <label class="cta-form-label" for="f-brand">Brand Name</label>
+      <input type="text" id="f-brand" name="brand" class="cta-input" placeholder="你的品牌名稱" required>
+    </div>
+    <div class="cta-form-row cta-form-row--split">
+      <div>
+        <label class="cta-form-label" for="f-contact">Contact</label>
+        <input type="text" id="f-contact" name="contact" class="cta-input" placeholder="聯絡人姓名" required>
+      </div>
+      <div>
+        <label class="cta-form-label" for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" class="cta-input" placeholder="you@company.com" required>
+      </div>
+    </div>
+    <div class="cta-form-row">
+      <label class="cta-form-label" for="f-message">Message</label>
+      <textarea id="f-message" name="message" class="cta-textarea" placeholder="想了解什麼？例如：我們品牌做台灣鳳梨酥，想了解進入 Costco 的機會..."></textarea>
+    </div>
+    <button type="submit" class="btn">送出預約諮詢</button>
+    <p class="cta-note">無需任何費用，也不會有推銷壓力。</p>
+  </form>
 
   <div class="cta-prep reveal" style="--delay: 0.5s">
     <p class="cta-prep-title">來聊之前，可以先準備這些</p>
@@ -1554,6 +1651,42 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     }
   });
 });
+
+// --- Consultation form — mailto submission ---
+(function () {
+  var form = document.getElementById('cta-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var brand = form.brand.value.trim();
+    var contact = form.contact.value.trim();
+    var email = form.email.value.trim();
+    var message = form.message.value.trim();
+
+    var subject = '【Pulire 諮詢】' + brand + ' — ' + contact;
+    var body = '品牌名稱：' + brand + '\n'
+             + '聯絡人：' + contact + '\n'
+             + 'Email：' + email + '\n\n'
+             + '想了解的內容：\n' + (message || '（未填寫）');
+
+    // Open mailto
+    window.location.href = 'mailto:hello@pulire.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    // Show success state
+    setTimeout(function () {
+      form.innerHTML =
+        '<div class="cta-form-success">'
+        + '<div class="cta-form-success-icon">✓</div>'
+        + '<p class="cta-form-success-title">信件已準備好</p>'
+        + '<p class="cta-form-success-desc">你的 Email 客戶端應該已經開啟，<br>請確認內容後送出即可。我們收到後會盡快回覆！</p>'
+        + '</div>';
+    }, 800);
+  });
+})();
 </script>
 </body>
 </html>
